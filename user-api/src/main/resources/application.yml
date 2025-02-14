@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    openfeign:
+      okhttp:
+        enabled: true
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    tryItOutEnabled: true  # 🚀 Swagger 실행 버튼 강제 활성화
+  paths-to-match: /**  # 모든 API 엔드포인트를 Swagger에 포함
