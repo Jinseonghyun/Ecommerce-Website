@@ -6,6 +6,16 @@ spring:
     openfeign:
       okhttp:
         enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/cms?useSSL=false,useUnicode=true&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    hikari:
+      password: 1
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
 
 springdoc:
   api-docs:
