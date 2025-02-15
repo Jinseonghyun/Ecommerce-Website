@@ -22,6 +22,10 @@ public class SignUpApplication {
     private final MailgunClient mailgunClient;
     private final SignUpCustomerService signUpCustomerService;
 
+    public void customerVerify(String email, String code) {
+        signUpCustomerService.verifyEmail(email, code);
+    }
+
     public String customerSignUp(SignUpForm form) {
         if (signUpCustomerService.isEmailExist(form.getEmail())) {
             throw new CustomException(ErrorCode.ALREADY_REGISTER_USER);
@@ -50,7 +54,7 @@ public class SignUpApplication {
     private String getVerificationEmailBody(String email, String name, String code) {
         StringBuilder builder = new StringBuilder();
         return builder.append("Hello").append(name).append("! Please Click Link for verification.\n\n")
-                .append("http://localhost:8081/customer/signup/verify?email=")
+                .append("http://localhost:8081/signup/verify/customer/?email=")
                 .append(email)
                 .append("&code=")
                 .append(code).toString();
