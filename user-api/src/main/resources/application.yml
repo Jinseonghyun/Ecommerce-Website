@@ -7,7 +7,7 @@ spring:
       okhttp:
         enabled: true
   datasource:
-    url: jdbc:mysql://localhost:3306/cms?useSSL=false,useUnicode=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/cms?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     hikari:
@@ -16,6 +16,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create
+
+  config:
+    import: "classpath:config/secrets.yml"
 
 springdoc:
   api-docs:
