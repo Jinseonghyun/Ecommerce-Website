@@ -7,12 +7,14 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
+import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.Objects;
 
 public class JwtAuthenticationProvider {
-    private String secretKey = "secretKey";
+    private SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     private long tokenValidTime = 1000L * 60 * 60 * 24;
 
