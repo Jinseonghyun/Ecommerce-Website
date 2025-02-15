@@ -34,7 +34,7 @@ public class Customer extends BaseEntity {
 
     private LocalDateTime verifyExpiredAt;
     private String verificationCode;
-    private boolean verify;
+    private boolean verify = false;
 
     public static Customer from(SignUpForm form) {
         return Customer.builder()
@@ -43,6 +43,7 @@ public class Customer extends BaseEntity {
                 .name(form.getName())
                 .birth(form.getBirth())
                 .phone(form.getPhone())
+                .verify(false)
                 .build();
     }
 }
