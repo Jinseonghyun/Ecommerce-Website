@@ -28,5 +28,6 @@ public class CustomerFilter implements Filter {
         customerService.findByIdAndEmail(vo.getId(), vo.getEmail()).orElseThrow(
                 () -> new ServletException("Invalid Access")
         );
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }
