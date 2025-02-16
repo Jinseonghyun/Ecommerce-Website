@@ -54,7 +54,7 @@ public class SignUpApplication {
         sellerService.verifyEmail(email, code);
     }
 
-    public String SellerSignUp(SignUpForm form) {
+    public String sellerSignUp(SignUpForm form) {
         if (sellerService.isEmailExist(form.getEmail())) {
             throw new CustomException(ErrorCode.ALREADY_REGISTER_USER);
         } else {
