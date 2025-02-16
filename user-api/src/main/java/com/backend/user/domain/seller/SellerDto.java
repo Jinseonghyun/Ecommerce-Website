@@ -1,6 +1,5 @@
-package com.backend.user.domain.customer;
+package com.backend.user.domain.seller;
 
-import com.backend.user.domain.model.Customer;
 import com.backend.user.domain.model.Seller;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
