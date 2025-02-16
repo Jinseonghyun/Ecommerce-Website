@@ -2,7 +2,7 @@ package com.backend.user.controller;
 
 import com.backend.domain.config.JwtAuthenticationProvider;
 import com.backend.domain.domain.common.UserVo;
-import com.backend.user.domain.customer.SellerDto;
+import com.backend.user.domain.seller.SellerDto;
 import com.backend.user.domain.model.Seller;
 import com.backend.user.exception.CustomException;
 import com.backend.user.exception.ErrorCode;
