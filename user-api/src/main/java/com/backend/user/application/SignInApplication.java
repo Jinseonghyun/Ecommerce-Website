@@ -6,7 +6,7 @@ import com.backend.user.domain.SignInForm;
 import com.backend.user.domain.model.Customer;
 import com.backend.user.exception.CustomException;
 import com.backend.user.exception.ErrorCode;
-import com.backend.user.service.CustomerService;
+import com.backend.user.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

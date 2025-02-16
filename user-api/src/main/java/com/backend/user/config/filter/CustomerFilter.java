@@ -2,7 +2,7 @@ package com.backend.user.config.filter;
 
 import com.backend.domain.config.JwtAuthenticationProvider;
 import com.backend.domain.domain.common.UserVo;
-import com.backend.user.service.CustomerService;
+import com.backend.user.service.customer.CustomerService;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;

@@ -6,7 +6,7 @@ import com.backend.user.domain.customer.CustomerDto;
 import com.backend.user.domain.model.Customer;
 import com.backend.user.exception.CustomException;
 import com.backend.user.exception.ErrorCode;
-import com.backend.user.service.CustomerService;
+import com.backend.user.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

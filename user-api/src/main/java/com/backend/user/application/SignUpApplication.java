@@ -6,7 +6,7 @@ import com.backend.user.domain.SignUpForm;
 import com.backend.user.domain.model.Customer;
 import com.backend.user.exception.CustomException;
 import com.backend.user.exception.ErrorCode;
-import com.backend.user.service.SignUpCustomerService;
+import com.backend.user.service.customer.SignUpCustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
