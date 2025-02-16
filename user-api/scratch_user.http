@@ -1,0 +1,46 @@
+### 회원가입 (고객)
+POST localhost:8081/signup/customer
+Content-Type: application/json
+
+{
+  "email": "jinsunghyun9@gmail.com",
+  "name": "아이언맨",
+  "password": "pw",
+  "birth": "2025-02-16",
+  "phone": "01012341234"
+}
+
+### 이메일 인증 (고객)
+GET localhost:8081/signup/customer/verify?email=jinsunghyun9@gmail.com&code=KcimDVIjXz
+
+### 로그인 (고객)
+POST http://localhost:8081/signin/customer
+Content-Type: application/json
+
+{
+  "email": "jinsunghyun9@gmail.com",
+  "password": "pw"
+}
+
+### 회원 정보 조회 (고객)
+GET http://localhost:8081/customer/getInfo
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZDEyM3BKd1M2MjFpZVl0VFdvPSIsImp0aSI6ImdHOU9iYytuNllVeFd0ZC9kQldiMkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE3Mzk3MjI3MDksImV4cCI6MTczOTgwOTEwOX0.3sYW13TsxLOnCLyWaE0aj7E_oXBfUtGP42vIe0djQPk
+
+### 잔액 변경 (고객)
+POST http://localhost:8081/customer/balance
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZDEyM3BKd1M2MjFpZVl0VFdvPSIsImp0aSI6ImdHOU9iYytuNllVeFd0ZC9kQldiMkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE3Mzk3MjI3MDksImV4cCI6MTczOTgwOTEwOX0.3sYW13TsxLOnCLyWaE0aj7E_oXBfUtGP42vIe0djQPk
+
+{
+  "from": "server",
+  "message":"돈 충전",
+  "money": "50000"
+
+}
+
+#######################################
+
+### 회원가입 (셀러)
+
+### 로그인 (셀러)
