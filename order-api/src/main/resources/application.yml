@@ -20,4 +20,11 @@ spring:
       host: localhost
       port: 6379
 
-
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    tryItOutEnabled: true  # 🚀 Swagger 실행 버튼 강제 활성화
+  paths-to-match: /**  # 모든 API 엔드포인트를 Swagger에 포함
