@@ -14,3 +14,15 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZ
   ],
   "name": "나이키 에어포스"
 }
+
+### 상품 아이템 추가 (셀러)
+POST localhost:8082/seller/product/item
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZDEyM3BKd1M2MjFpZVl0VFdvPSIsImp0aSI6ImdHOU9iYytuNllVeFd0ZC9kQldiMkE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNzM5Nzk0MTIyLCJleHAiOjE3Mzk4ODA1MjJ9.Pyy5Qbc4ILgTFjc3I1qfuqIjdrRHAEoEcMt6mTVQCKs
+
+{
+  "productId": 1,
+  "count": 1,
+  "name": "280",
+  "price": 100000
+}
