@@ -1,7 +1,10 @@
 package com.backend.order.exception;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 public class CustomException extends RuntimeException {
@@ -13,5 +16,15 @@ public class CustomException extends RuntimeException {
         super(errorCode.getMessage());
         this.errorCode = errorCode;
         this.status = errorCode.getHttpStatus().value();
+    }
+
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Getter
+    public static class CustomExceptionResponse {
+        private int status;
+        private String code;
+        private String message;
     }
 }
