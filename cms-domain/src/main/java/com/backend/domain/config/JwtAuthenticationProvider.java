@@ -10,11 +10,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Objects;
 
 public class JwtAuthenticationProvider {
-    private SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final String SECRET = "your-secure-secret-key-must-be-32-characters"; // 32글자 이상 필요!
+    private final SecretKey secretKey = Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));
 
     private long tokenValidTime = 1000L * 60 * 60 * 24;
 
