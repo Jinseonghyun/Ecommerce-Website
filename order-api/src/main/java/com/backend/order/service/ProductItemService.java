@@ -3,6 +3,7 @@ package com.backend.order.service;
 import com.backend.order.domain.model.Product;
 import com.backend.order.domain.model.ProductItem;
 import com.backend.order.domain.product.AddProductItemForm;
+import com.backend.order.domain.product.UpdateProductItemForm;
 import com.backend.order.exception.CustomException;
 import com.backend.order.repository.ProductItemRepository;
 import com.backend.order.repository.ProductRepository;
@@ -32,5 +33,15 @@ public class ProductItemService {
         ProductItem productItem = ProductItem.of(sellerId, form);
         product.getProductItems().add(productItem);
         return product;
+    }
+
+    @Transactional
+    public ProductItem updateProductItem(Long sellerId, UpdateProductItemForm form) {
+        ProductItem productItem = productItemRepository.findById(form.getId())
+                .filter(pi -> pi.getSellerId().equals(sellerId)).orElseThrow(() -> new CustomException(NOT_FOUND_ITEM));
+        productItem.setName(form.getName());
+        productItem.setCount(form.getCount());
+        productItem.setPrice(form.getPrice());
+        return productItem;
     }
 }
