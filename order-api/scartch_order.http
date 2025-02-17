@@ -12,7 +12,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZ
       "price": 100000
     }
   ],
-  "name": "나이키 에어포스"
+  "name": "나이키 에어포스 2"
 }
 
 ### 상품 아이템 추가 (셀러)
@@ -58,7 +58,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZ
   "price": 100000
 }
 
-### 상품 삭제 (셀러)
+### 상품 삭제
 DELETE localhost:8082/seller/product?id=1
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZDEyM3BKd1M2MjFpZVl0VFdvPSIsImp0aSI6ImdHOU9iYytuNllVeFd0ZC9kQldiMkE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNzM5Nzk0MTIyLCJleHAiOjE3Mzk4ODA1MjJ9.Pyy5Qbc4ILgTFjc3I1qfuqIjdrRHAEoEcMt6mTVQCKs
@@ -77,7 +77,16 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZ
   "name": "나이키 에어포스 한정판"
 }
 
-### 상품 아이템 삭제 (셀러)
+### 상품 아이템 삭제
 DELETE localhost:8082/seller/product/item?id=2
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZDEyM3BKd1M2MjFpZVl0VFdvPSIsImp0aSI6ImdHOU9iYytuNllVeFd0ZC9kQldiMkE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNzM5Nzk0MTIyLCJleHAiOjE3Mzk4ODA1MjJ9.Pyy5Qbc4ILgTFjc3I1qfuqIjdrRHAEoEcMt6mTVQCKs
+
+### 상품 검색
+GET localhost:8082/search/product?name=나이키
+Content-Type: application/json
+
+### 상품 디테일 검색
+GET localhost:8082/search/product/detail?productId=1
+Content-Type: application/json
+
