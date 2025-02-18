@@ -2,6 +2,7 @@ package com.backend.order.controller;
 
 import com.backend.domain.config.JwtAuthenticationProvider;
 import com.backend.order.application.CartApplication;
+import com.backend.order.application.OrderApplication;
 import com.backend.order.domain.product.AddProductCartForm;
 import com.backend.order.domain.redis.Cart;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerCartController {
 
     private final CartApplication cartApplication;
+    private final OrderApplication orderApplication;
     private final JwtAuthenticationProvider jwtAuthenticationProvider;
 
     @PostMapping
@@ -36,5 +38,12 @@ public class CustomerCartController {
         return ResponseEntity.ok(cartApplication.updateCart(jwtAuthenticationProvider.getUserVo(token).getId(), cart));
     }
 
+    @PostMapping("/order")
+    public ResponseEntity<Cart> order(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestBody Cart cart) {
+            orderApplication.order(token, cart);
+        return ResponseEntity.ok().build();
+    }
 
 }
