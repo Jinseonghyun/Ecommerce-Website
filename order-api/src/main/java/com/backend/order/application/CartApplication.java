@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -56,6 +57,10 @@ public class CartApplication {
         // 2. 메세지를 보고 난 다음에는 , 이미 본 메세지는 스팸이 되기 때문에 제거한다.
     }
 
+    public void clearCart(Long cutomerId) {
+        cartService.putCart(cutomerId, null);
+    }
+
     private Cart refreshCart(Cart cart) {
         // 1. 상품이나 상품의 아이템의 정보, 가격, 수량이 변경되었는지 체크하고
         // 그에 맞는 알람을 제공해준다.
@@ -75,24 +80,24 @@ public class CartApplication {
                 cart.getProducts().remove(cartProduct);
                 i--;
                 cart.addMessage(cartProduct.getName() + " 상품이 삭제되었습니다.");
-                continue;;
+                continue;
             }
 
-            Map<Long, ProductItem> pi = p.getProductItems().stream()
+            Map<Long, ProductItem> productItemMap = p.getProductItems().stream()
                     .collect(Collectors.toMap(ProductItem::getId, productItem -> productItem));
 
 
             // 아이템 1, 2, 3
             List<String> tmpMessages = new ArrayList<>();
             for (int j = 0; j< cartProduct.getItems().size(); j++) {
-                Cart.ProductItem cartProductItem = cartProduct.getItems().get(i);
-                ProductItem pi = pi.get(cartProductItem.getId());
+                Cart.ProductItem cartProductItem = cartProduct.getItems().get(j);
+                ProductItem pi = productItemMap.get(cartProductItem.getId());
 
                 if (pi == null) {
                     cartProduct.getItems().remove(cartProductItem);
                     j--;
                     tmpMessages.add(cartProductItem.getName() + " 옵션이 삭제되었습니다.");
-                    continue;;
+                    continue;
                 }
 
                 boolean isPriceChanged = false, isCountNotEnough = false;
@@ -103,7 +108,7 @@ public class CartApplication {
                 }
                 if (cartProductItem.getCount() > pi.getCount()) {
                     isCountNotEnough = true;
-                    cartProductItem.setPrice(pi.getCount());
+                    cartProductItem.setCount(pi.getCount());
                 }
                 if (isPriceChanged && isCountNotEnough) {
                     tmpMessages.add(cartProductItem.getName() + " 가격변동, 수량이 부족하여 구매 가능한 최대치로 변경되었습니다.");
@@ -133,8 +138,12 @@ public class CartApplication {
     }
 
     private boolean addAble(Cart cart, Product product, AddProductCartForm form) {
+//        if (form.getId().equals(product.getId()))
         Cart.Product cartProduct = cart.getProducts().stream().filter(p -> p.getId().equals(form.getId()))
-                .findFirst().orElseThrow(() -> new CustomException(NOT_FOUND_PRODUCT));
+                .findFirst().orElse(Cart.Product.builder().id(product.getId())
+
+                        .items(Collections.emptyList()).build());
+
         Map<Long, Integer> cartItemCountMap = cartProduct.getItems().stream()
                 .collect(Collectors.toMap(Cart.ProductItem::getId, Cart.ProductItem::getCount));
         Map<Long, Integer> currentItemCountMap = product.getProductItems().stream()
@@ -143,6 +152,9 @@ public class CartApplication {
         return form.getItems().stream().noneMatch(
                 formItem -> {
                     Integer cartCount = cartItemCountMap.get(formItem.getId());
+                    if (cartCount == null) {
+                        cartCount = 0;
+                    }
                     Integer currentCount = currentItemCountMap.get(formItem.getId());
                     return formItem.getCount() + cartCount > currentCount;
                 });
