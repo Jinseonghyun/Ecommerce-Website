@@ -1,0 +1,32 @@
+server:
+  port: 8081
+  shutdown: graceful
+
+spring:
+  cloud:
+    openfeign:
+      okhttp:
+        enabled: true
+  datasource:
+    url: {mysqlUrl}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: {username}
+    hikari:
+      password: {password}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: mysql
+
+  config:
+    import: "classpath:config/secrets.yml"
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    tryItOutEnabled: true  # 🚀 Swagger 실행 버튼 강제 활성화
+  paths-to-match: /**  # 모든 API 엔드포인트를 Swagger에 포함
