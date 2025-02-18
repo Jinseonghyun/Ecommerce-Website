@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### 이메일 인증 (고객)
-GET localhost:8081/signup/customer/verify?email=jinsunghyun9@gmail.com&code=KcimDVIjXz
+GET localhost:8081/signup/customer/verify?email=jinsunghyun9@gmail.com&code=HiB0VSC0CT
 
 ### 로그인 (고객)
 POST http://localhost:8081/signin/customer
@@ -25,7 +25,7 @@ Content-Type: application/json
 ### 회원 정보 조회 (고객)
 GET http://localhost:8081/customer/getInfo
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZDEyM3BKd1M2MjFpZVl0VFdvPSIsImp0aSI6ImdHOU9iYytuNllVeFd0ZC9kQldiMkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE3Mzk3MjI3MDksImV4cCI6MTczOTgwOTEwOX0.3sYW13TsxLOnCLyWaE0aj7E_oXBfUtGP42vIe0djQPk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZDEyM3BKd1M2MjFpZVl0VFdvPSIsImp0aSI6ImdHOU9iYytuNllVeFd0ZC9kQldiMkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE3Mzk4Mzc1MTgsImV4cCI6MTczOTkyMzkxOH0.YweAzEfDPBojDa0SjYj5a8n8ppF9Q4GDl4DwfHDyryk
 
 ### 잔액 변경 (고객)
 POST http://localhost:8081/customer/balance

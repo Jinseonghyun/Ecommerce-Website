@@ -90,3 +90,22 @@ Content-Type: application/json
 GET localhost:8082/search/product/detail?productId=1
 Content-Type: application/json
 
+### 카트 추가
+POST localhost:8082/customer/cart
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsRnFXNUVCNGhxMlBGN0NUVXJDTzd2WXEvZDEyM3BKd1M2MjFpZVl0VFdvPSIsImp0aSI6ImdHOU9iYytuNllVeFd0ZC9kQldiMkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE3Mzk4Mzc1MTgsImV4cCI6MTczOTkyMzkxOH0.YweAzEfDPBojDa0SjYj5a8n8ppF9Q4GDl4DwfHDyryk
+
+{
+  "description": "상품 설명",
+  "id": 1,
+  "items": [
+    {
+      "id": 1,
+      "name": "270",
+      "count": 1,
+      "price": 100000
+    }
+  ],
+  "sellerId": 1,
+  "name": "나이키 에어포스 2"
+}
