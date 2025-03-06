@@ -3,6 +3,9 @@ server:
   shutdown: graceful
 
 spring:
+  profiles:
+    include:
+    - secret
   cloud:
     openfeign:
       okhttp:
@@ -18,8 +21,15 @@ spring:
     hibernate:
       ddl-auto: update
 
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
   config:
-    import: "classpath:config/secrets.yml"
+    import:
+    - "classpath:config/secrets.yml"
+
 
 springdoc:
   api-docs:
